@@ -88,3 +88,50 @@ except KeyboardInterrupt:
     print("종료")
 ```
 ***
+***
+# dc모터 2개, L9110 모터 드라이버 코드, 라즈베리파이 파이썬
+```
+import RPi.GPIO as GPIO
+import time
+
+# 사용 핀 설정
+IA1 = 17   # 방향 제어 핀 1
+IA2 = 27   # 방향 제어 핀 2
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(IA1, GPIO.OUT)
+GPIO.setup(IA2, GPIO.OUT)
+
+def forward():
+    GPIO.output(IA1, GPIO.HIGH)
+    GPIO.output(IA2, GPIO.LOW)
+    print("정방향 회전")
+
+def backward():
+    GPIO.output(IA1, GPIO.LOW)
+    GPIO.output(IA2, GPIO.HIGH)
+    print("역방향 회전")
+
+def stop():
+    GPIO.output(IA1, GPIO.LOW)
+    GPIO.output(IA2, GPIO.LOW)
+    print("정지")
+
+try:
+    while True:
+        forward()
+        time.sleep(2)
+
+        stop()
+        time.sleep(1)
+
+        backward()
+        time.sleep(2)
+
+        stop()
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print("종료")
+    GPIO.cleanup()
+```
