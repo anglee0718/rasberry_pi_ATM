@@ -135,3 +135,7 @@ except KeyboardInterrupt:
     print("종료")
     GPIO.cleanup()
 ```
+# 핀
+* ### 라즈베리파이 L9110 : GPIO 17	IA1 / GPIO 27	IA2
+* ### 라즈베리파이 L9110 : GPIO 17	IA1	모터 방향 제어 1 / GPIO 27	IA2	모터 방향 제어 2 / 5V	VCC	전원 / GND	GND	공통 그라운드
+* ##### dc 모터, L9110핀 위로 기준하에 vcc 왼쪽, gnd 오른쪽
